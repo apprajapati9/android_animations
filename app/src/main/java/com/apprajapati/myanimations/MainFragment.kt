@@ -45,14 +45,6 @@ class MainFragment : Fragment() {
         }
     }
 
-    //Uncomment below code if you want to test Handler()
-//    private val handler = object : Handler(Looper.getMainLooper()) {
-//        override fun handleMessage(msg: Message) {
-//            val bundle = msg.data
-//
-//            displayData(bundle.getString("Ajay")!!)
-//        }
-//    }
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -69,34 +61,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        binding.buttonFirst.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
-
-        /*
-        binding.buttonStart.setOnClickListener {
-            thread (start = true) {
-                val bundle = Bundle()
-
-                for (i in 1..10) {
-                    bundle.putString("Ajay", "Thread counter $i \n")
-
-                    Message().also {
-                        it.data = bundle
-                        handler.sendMessage(it)
-                    }
-                    Thread.sleep(1000) //every one second
-                }
-                bundle.putString("Ajay", "All counters done!")
-                val msg = Message()
-                msg.data = bundle
-                handler.sendMessage(msg)
-                // You can use also like before to add message data but this is just to illustrate how it can be done without also{} block.
-            }
-
-        }
-        */
 
         imageViews = arrayOf(binding.die1,
             binding.die2,
@@ -136,10 +100,6 @@ class MainFragment : Fragment() {
         }
 
     }
-
-//    private fun displayData(data : String) {
-//        binding.textviewFirst.append(data)
-//    }
 
     private fun getDieValue() : Int {
         return Random.nextInt(1, 7) //until isn't inclusive.
