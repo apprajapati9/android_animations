@@ -2,8 +2,9 @@
     <string name="app_name">MyAnimations</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="first_fragment_label">Roll Dice Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="main_fragment">Main Fragment</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
     <string name="previous">Previous</string>
@@ -13,4 +14,5 @@
 
     <string name="roll_the_dice">Roll the Dice</string>
     <string name="roll">Roll!</string>
+    <string name="roll_dice_button_text">Roll Dice Animation</string>
 </resources>

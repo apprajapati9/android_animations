@@ -3,17 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/MainFragment">
+
+
+    <fragment android:id="@+id/MainFragment"
+        android:name="com.apprajapati.myanimations.MainFragment"
+        android:label="@string/main_fragment"
+        tools:layout="@layout/fragment_main">
+
+        <action android:id="@+id/action_mainFragment_to_RollDiceFragment"
+            app:destination="@id/RollDiceFragment"/>
+
+        <action android:id="@+id/action_mainFragment_to_secondFragment"
+            app:destination="@id/SecondFragment" />
+
+    </fragment>
+
+
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/RollDiceFragment"
         android:name="com.apprajapati.myanimations.RollDiceAnimation"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_roll_dice">
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -21,8 +35,8 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+
     </fragment>
+
+
 </navigation>

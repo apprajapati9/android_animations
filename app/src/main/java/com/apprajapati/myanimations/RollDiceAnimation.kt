@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.apprajapati.myanimations.databinding.FragmentFirstBinding
+import com.apprajapati.myanimations.databinding.FragmentRollDiceBinding
 import kotlin.concurrent.thread
 import kotlin.random.Random
 
@@ -24,7 +24,7 @@ const val DIE_VALUE_KEY = "die_value"
 
 class RollDiceAnimation : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentRollDiceBinding? = null
 
     private lateinit var imageViews: Array<ImageView>
     private val drawables = arrayOf(R.drawable.die_1,
@@ -54,7 +54,7 @@ class RollDiceAnimation : Fragment() {
             savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentRollDiceBinding.inflate(inflater, container, false)
         return binding.root
 
     }
