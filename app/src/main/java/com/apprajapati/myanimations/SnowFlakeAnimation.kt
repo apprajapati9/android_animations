@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.apprajapati.myanimations.databinding.FragmentSecondBinding
+import com.apprajapati.myanimations.databinding.FragmentSnowFlakeAnimationBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class SnowFlakeAnimation : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentSnowFlakeAnimationBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,9 +22,9 @@ class SecondFragment : Fragment() {
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentSnowFlakeAnimationBinding.inflate(inflater, container, false)
         return binding.root
 
     }

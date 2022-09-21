@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Roll Dice Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="second_fragment_label">Snow Flake Fragment</string>
     <string name="main_fragment">Main Fragment</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
@@ -15,4 +15,5 @@
     <string name="roll_the_dice">Roll the Dice</string>
     <string name="roll">Roll!</string>
     <string name="roll_dice_button_text">Roll Dice Animation</string>
+    <string name="snow_animation_button_text">Snow-Fall animation</string>
 </resources>

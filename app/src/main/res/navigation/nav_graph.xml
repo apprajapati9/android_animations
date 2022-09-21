@@ -14,8 +14,8 @@
         <action android:id="@+id/action_mainFragment_to_RollDiceFragment"
             app:destination="@id/RollDiceFragment"/>
 
-        <action android:id="@+id/action_mainFragment_to_secondFragment"
-            app:destination="@id/SecondFragment" />
+        <action android:id="@+id/action_mainFragment_to_SnowFragment"
+            app:destination="@id/SnowFlakeFragment" />
 
     </fragment>
 
@@ -30,10 +30,10 @@
 
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.apprajapati.myanimations.SecondFragment"
+        android:id="@+id/SnowFlakeFragment"
+        android:name="com.apprajapati.myanimations.SnowFlakeAnimation"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_snow_flake_animation">
 
 
     </fragment>
