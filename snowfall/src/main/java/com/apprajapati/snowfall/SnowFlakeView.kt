@@ -24,7 +24,7 @@ class SnowFlakeView(context: Context, attrs: AttributeSet) :
     private val snowflakeAlphaMin: Int
     private val snowflakeAlphaMax: Int
     private val snowflakeAngleMax: Int
-    private val snowflakeSizeMinInPx : Int
+    private val snowflakeSizeMinInPx : Int  //TODO: Get dimensions
     private val snowflakeSizeMaxInPx : Int
     private val snowflakeSpeedMin: Int
     private val snowflakeSpeedMax: Int

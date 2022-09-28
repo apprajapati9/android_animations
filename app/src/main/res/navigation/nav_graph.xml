@@ -17,6 +17,9 @@
         <action android:id="@+id/action_mainFragment_to_SnowFragment"
             app:destination="@id/SnowFlakeFragment" />
 
+        <action android:id="@+id/action_mainFragment_to_RotateSquareFragment"
+            app:destination="@id/rotateSquareFragment"/>
+
     </fragment>
 
 
@@ -37,6 +40,12 @@
 
 
     </fragment>
+
+    <fragment
+        android:id="@+id/rotateSquareFragment"
+        android:name="com.apprajapati.myanimations.RotatingSquare"
+        android:label="@string/rotating_square"
+        tools:layout="@layout/fragment_rotate_square"/>
 
 
 </navigation>

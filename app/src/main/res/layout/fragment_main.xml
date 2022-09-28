@@ -41,5 +41,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/roll_dice_button" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rotate_square_animation"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/rotating_square"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/snow_animation" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

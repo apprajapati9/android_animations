@@ -16,4 +16,5 @@
     <string name="roll">Roll!</string>
     <string name="roll_dice_button_text">Roll Dice Animation</string>
     <string name="snow_animation_button_text">Snow-Fall animation</string>
+    <string name="rotating_square">Rotate Square Animation</string>
 </resources>

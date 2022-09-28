@@ -39,6 +39,10 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_SnowFragment)
         }
 
+        binding.rotateSquareAnimation.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_RotateSquareFragment)
+        }
+
     }
 
 
