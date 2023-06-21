@@ -12,6 +12,7 @@ import android.view.animation.TranslateAnimation
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.apprajapati.myanimations.databinding.FragmentAndroidAnimationsBinding
 
 class AndroidAnimations : Fragment() {
@@ -20,7 +21,7 @@ class AndroidAnimations : Fragment() {
 
     private val binding get() = _binding!!
 
-    //Animations
+    private val mAdapter = MyItemAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,12 +30,26 @@ class AndroidAnimations : Fragment() {
     ): View {
         _binding = FragmentAndroidAnimationsBinding.inflate(inflater, container, false)
 
-        //Use below functions to test each function.
+        //Use below functions to test each function. Every demo uses views and hides views accordingly.
+
+        //animateTextViewUsingCode()
         // animateUsingXML()
         // animationScreenTransition() -- cool transition from this fragment to secondactivity.
-        animationListXML()
+        //animationListXML() -using images to create an animation using animation-list
+
+        animateRecyclerViewItems()
+
 
         return binding.root
+    }
+
+    private fun animateRecyclerViewItems(){
+        binding.helloButton.visibility = View.GONE
+        binding.imageView.visibility = View.GONE
+        binding.animationRecyclerview.visibility = View.VISIBLE
+
+        binding.animationRecyclerview.adapter = mAdapter
+        binding.animationRecyclerview.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun animationListXML(){
