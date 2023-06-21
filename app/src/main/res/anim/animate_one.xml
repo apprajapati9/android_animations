@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="3000">
+    <rotate
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toDegrees="1000" />
+
+    <scale
+        android:fromXScale="1"
+        android:fromYScale="1"
+        android:toXScale="3"
+        android:toYScale="3" />
+
+    <alpha
+        android:fromAlpha="1"
+        android:toAlpha="0" />
+
+</set>
+
+    <!--
+      pivot - central point, pin or shaft on which a mechanism turns or oscillates.
+      PivotX - central point for X
+      PivotY - central point for Y.
+
+      pixvot point servers as the center of rotation for the View being animated. It is defined as a fraction
+        or a pixel value relative to the view's size. The coordinates PivotX and Y represent the position of the pivot
+           point WITHIN THE VIEW'S coordinate system.
+           by specifying the pivot point, you can control the center of rotation for the animation.
+
+      interpolator - a device or apparatus that guides a tool through a smooth curve when provided with a set of points
+        defining the curve.
+
+        android:interpolator="@android:interpolator/anticipate_overshoot"
+
+      -->

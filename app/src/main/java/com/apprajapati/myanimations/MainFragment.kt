@@ -1,5 +1,6 @@
 package com.apprajapati.myanimations
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,8 +36,13 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_RollDiceFragment)
         }
 
-        binding.snowAnimation.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_SnowFragment)
+//        binding.snowAnimation.setOnClickListener {
+//            findNavController().navigate(R.id.action_mainFragment_to_SnowFragment)
+//        }
+        binding.snowAnimation.visibility = View.GONE
+
+        binding.animationButton.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_androidAnimations)
         }
 
         binding.rotateSquareAnimation.setOnClickListener {
