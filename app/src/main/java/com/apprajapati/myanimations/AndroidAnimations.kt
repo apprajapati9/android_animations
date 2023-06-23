@@ -1,5 +1,6 @@
 package com.apprajapati.myanimations
 
+import android.animation.ValueAnimator
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
+import android.view.animation.RotateAnimation
 import android.view.animation.TranslateAnimation
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -17,7 +19,7 @@ import com.apprajapati.myanimations.databinding.FragmentAndroidAnimationsBinding
 
 class AndroidAnimations : Fragment() {
 
-    private var _binding : FragmentAndroidAnimationsBinding? = null
+    private var _binding: FragmentAndroidAnimationsBinding? = null
 
     private val binding get() = _binding!!
 
@@ -34,16 +36,16 @@ class AndroidAnimations : Fragment() {
 
         //animateTextViewUsingCode()
         // animateUsingXML()
-        // animationScreenTransition() -- cool transition from this fragment to secondactivity.
-        //animationListXML() -using images to create an animation using animation-list
+        // animationScreenTransition() //-- cool transition from this fragment to secondactivity.
+        animationListXML() //-using images to create an animation using animation-list
 
-        animateRecyclerViewItems()
+        //animateRecyclerViewItems()
 
 
         return binding.root
     }
 
-    private fun animateRecyclerViewItems(){
+    private fun animateRecyclerViewItems() {
         binding.helloButton.visibility = View.GONE
         binding.imageView.visibility = View.GONE
         binding.animationRecyclerview.visibility = View.VISIBLE
@@ -52,19 +54,20 @@ class AndroidAnimations : Fragment() {
         binding.animationRecyclerview.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun animationListXML(){
+    private fun animationListXML() {
         var animationRunning = false
 
-        binding.helloButton.background = ContextCompat.getDrawable(requireContext(), R.drawable.background_animation)
+        binding.helloButton.background =
+            ContextCompat.getDrawable(requireContext(), R.drawable.background_animation)
 
-        val animationDrawable =  binding.helloButton.background as AnimationDrawable
+        val animationDrawable = binding.helloButton.background as AnimationDrawable
 
-        binding.helloButton.setOnClickListener{
-            if(animationRunning){
+        binding.helloButton.setOnClickListener {
+            if (animationRunning) {
                 animationDrawable.stop()
                 binding.helloButton.text = "Start"
                 animationRunning = false
-            }else{
+            } else {
                 animationDrawable.start()
                 binding.helloButton.text = "Stop"
                 animationRunning = true
@@ -73,10 +76,10 @@ class AndroidAnimations : Fragment() {
 
     }
 
-    private fun animationScreenTransition(){
+    private fun animationScreenTransition() {
         binding.helloButton.setOnClickListener {
             val viewAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.animate_view)
-            viewAnimation.setAnimationListener( object : Animation.AnimationListener {
+            viewAnimation.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation?) {
 
                 }
@@ -87,14 +90,15 @@ class AndroidAnimations : Fragment() {
 
                 override fun onAnimationRepeat(animation: Animation?) {
 
-                } })
+                }
+            })
             binding.helloButton.startAnimation(viewAnimation)
         }
     }
 
-    private fun animateUsingXML(){
+    private fun animateUsingXML() {
         binding.helloButton.text = "Start"
-        binding.helloButton.setOnClickListener{
+        binding.helloButton.setOnClickListener {
             val animation1 = AnimationUtils.loadAnimation(requireContext(), R.anim.animate_one)
             val animation2 = AnimationUtils.loadAnimation(requireContext(), R.anim.animate_two)
 
@@ -104,15 +108,16 @@ class AndroidAnimations : Fragment() {
         }
     }
 
-    private fun animateTextViewUsingCode(){
-        binding.helloButton.setOnClickListener{
+    private fun animateTextViewUsingCode() {
+        binding.helloButton.setOnClickListener {
             it.startAnimation(rotateTranslateAnimation())
         }
     }
 
-    private fun rotateTranslateAnimation() : Animation{
+    private fun rotateTranslateAnimation(): Animation {
         val translate = TranslateAnimation(0f, 200f, 0f, 200f)
-        //val rotate = RotateAnimation(0f, 360f)
+        val rotate = RotateAnimation(0f, 360f)
+        //rotate.repeatMode = ValueAnimator.INFINITE
         // val scale = ScaleAnimation(0f,3f, 0f, 3f)
 
         val animationSet = AnimationSet(requireContext(), null)

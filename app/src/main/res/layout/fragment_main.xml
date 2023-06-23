@@ -9,14 +9,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/fragment_main_view"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/roll_dice_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
             android:padding="10dp"
@@ -26,12 +29,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/snow_animation"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
             android:padding="10dp"
@@ -41,12 +46,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/roll_dice_button" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/rotate_square_animation"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
             android:padding="10dp"
@@ -61,16 +68,35 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/cardview_dark_background"
             android:gravity="center"
             android:padding="10dp"
-            android:textColor="@color/white"
-            android:background="@color/cardview_dark_background"
             android:text="Animations"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.539"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rotate_square_animation" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:id="@+id/objectAnimatorButton"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Object Animator"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animation_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
