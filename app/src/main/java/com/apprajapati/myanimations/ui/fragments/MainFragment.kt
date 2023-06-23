@@ -1,14 +1,13 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.ui.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
+import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentMainBinding
 
 /**

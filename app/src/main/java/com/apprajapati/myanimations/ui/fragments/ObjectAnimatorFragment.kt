@@ -1,4 +1,4 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.ui.fragments
 
 import android.animation.Animator
 import android.animation.AnimatorSet

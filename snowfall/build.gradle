@@ -7,10 +7,10 @@ apply plugin: 'kotlin-android'
 
 
 android {
-    compileSdkVersion versions.compileSdk
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion versions.minSdk
+        minSdkVersion rootProject.ext.minSdk
     }
 
     compileOptions {
@@ -26,6 +26,6 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.10.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlinVersion"
 
 }

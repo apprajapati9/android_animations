@@ -1,6 +1,5 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.ui.fragments
 
-import android.animation.ValueAnimator
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.apprajapati.myanimations.adapters.MyItemAdapter
+import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentAndroidAnimationsBinding
 
 class AndroidAnimations : Fragment() {

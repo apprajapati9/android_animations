@@ -1,4 +1,4 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.ui.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentRollDiceBinding
 import kotlin.concurrent.thread
 import kotlin.random.Random
@@ -27,12 +28,14 @@ class RollDiceAnimation : Fragment() {
     private var _binding: FragmentRollDiceBinding? = null
 
     private lateinit var imageViews: Array<ImageView>
-    private val drawables = arrayOf(R.drawable.die_1,
-            R.drawable.die_2,
-            R.drawable.die_3,
-            R.drawable.die_4,
-            R.drawable.die_5,
-            R.drawable.die_6)
+    private val drawables = arrayOf(
+        R.drawable.die_1,
+        R.drawable.die_2,
+        R.drawable.die_3,
+        R.drawable.die_4,
+        R.drawable.die_5,
+        R.drawable.die_6
+    )
 
     private val dieHandler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {

@@ -1,4 +1,4 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.ui.fragments
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
@@ -171,8 +171,8 @@ class DragAndDropSingleContainer : Fragment() {
                 // lineView = lineView(requireContext(), event.x, event.y)
 
                 //These two methods are to test how X,Y coordinates are manipulated in order to position the view to the center.
-                drawLinesToVisualize(event.x, event.y)
-                drawLinesToVisualize(draggedView.x, draggedView.y)
+               // drawLinesToVisualize(event.x, event.y)
+               // drawLinesToVisualize(draggedView.x, draggedView.y)
 
                 true
             }
@@ -198,6 +198,11 @@ class DragAndDropSingleContainer : Fragment() {
         Log.d("View", "ScreenHeight ${pxToDp(display.widthPixels)}")
     }
 
+    /*
+        To visualize how X,Y coordinates are pointed to on the screen and reset.
+        Just to test. If need to test, uncomment the code in ACTION_DROP.
+
+     */
     private fun drawLinesToVisualize(cx: Float, cy: Float) {
         binding.containerLayout.addView(
             LineView(

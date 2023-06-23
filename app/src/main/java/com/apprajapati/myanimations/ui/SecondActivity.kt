@@ -1,4 +1,4 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -7,7 +7,7 @@
 
 
     <fragment android:id="@+id/MainFragment"
-        android:name="com.apprajapati.myanimations.MainFragment"
+        android:name="com.apprajapati.myanimations.ui.fragments.MainFragment"
         android:label="@string/main_fragment"
         tools:layout="@layout/fragment_main">
 
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/RollDiceFragment"
-        android:name="com.apprajapati.myanimations.RollDiceAnimation"
+        android:name="com.apprajapati.myanimations.ui.fragments.RollDiceAnimation"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_roll_dice">
 
@@ -53,12 +53,12 @@
 
     <fragment
         android:id="@+id/rotateSquareFragment"
-        android:name="com.apprajapati.myanimations.DragAndDropSingleContainer"
+        android:name="com.apprajapati.myanimations.ui.fragments.DragAndDropSingleContainer"
         android:label="@string/rotating_square"
         tools:layout="@layout/fragment_rotate_square"/>
     <fragment
         android:id="@+id/androidAnimations"
-        android:name="com.apprajapati.myanimations.AndroidAnimations"
+        android:name="com.apprajapati.myanimations.ui.fragments.AndroidAnimations"
         android:label="AndroidAnimations" >
         <action
             android:id="@+id/action_androidAnimations_to_MainFragment"
@@ -73,11 +73,11 @@
     </fragment>
     <activity
         android:id="@+id/secondActivity"
-        android:name="com.apprajapati.myanimations.SecondActivity"
+        android:name="com.apprajapati.myanimations.ui.SecondActivity"
         android:label="SecondActivity" />
     <fragment
         android:id="@+id/objectAnimatorFragment"
-        android:name="com.apprajapati.myanimations.ObjectAnimatorFragment"
+        android:name="com.apprajapati.myanimations.ui.fragments.ObjectAnimatorFragment"
         android:label="ObjectAnimatorFragment" />
 
 

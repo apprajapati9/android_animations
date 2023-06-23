@@ -1,4 +1,4 @@
-package com.apprajapati.myanimations
+package com.apprajapati.myanimations.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
