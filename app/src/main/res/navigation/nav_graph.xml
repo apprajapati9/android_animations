@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_MainFragment_to_objectAnimatorFragment"
             app:destination="@id/objectAnimatorFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_rotatingSquareTime"
+            app:destination="@id/rotatingSquareTime" />
 
     </fragment>
 
@@ -79,6 +82,10 @@
         android:id="@+id/objectAnimatorFragment"
         android:name="com.apprajapati.myanimations.ui.fragments.ObjectAnimatorFragment"
         android:label="ObjectAnimatorFragment" />
+    <fragment
+        android:id="@+id/rotatingSquareTime"
+        android:name="com.apprajapati.myanimations.ui.fragments.RotatingSquareTime"
+        android:label="RotatingSquareTime" />
 
 
 </navigation>

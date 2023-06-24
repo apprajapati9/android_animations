@@ -151,7 +151,7 @@ class DragAndDropSingleContainer : Fragment() {
                 draggedView.x =
                     event.x - (draggedView.width / 2) //Think 2 DIMENSIONAL VIEW to make visualization easier. Essentially resetting (0,0) coordinates to different position to exactly placing on the location where view dropped.
                 draggedView.y = event.y - (draggedView.height / 2)
-                //view.translateX/Y doesn't work. TODO: investigate why.
+                //view.translateX/Y doesn't work, Translation is for moving a view from one position to another relative to the x,y initial position.
 
                 /*
                 //These width and height logs give you standard heights as set in XML, so no need to check.

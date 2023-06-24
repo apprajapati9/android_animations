@@ -16,7 +16,7 @@ import com.apprajapati.myanimations.databinding.FragmentMainBinding
  */
 class MainFragment : Fragment() {
 
-    private var _binding : FragmentMainBinding? = null
+    private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,7 +24,7 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false )
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         return binding.root
     }
 
@@ -48,12 +48,15 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_RotateSquareFragment)
         }
 
-        binding.objectAnimatorButton.setOnClickListener{
+        binding.objectAnimatorButton.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_objectAnimatorFragment)
         }
 
-    }
+        binding.rotateSquareTime.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_rotatingSquareTime)
+        }
 
+    }
 
 
     override fun onDestroyView() {
