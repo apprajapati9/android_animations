@@ -12,11 +12,12 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_marginTop="24dp"
             android:gravity="center"
             android:text="Time"
+            android:background="@drawable/rotating_square_box"
             android:id="@+id/textView_time"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
