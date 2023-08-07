@@ -100,7 +100,7 @@ internal class SnowFlake(private val randomizer: Randomizer,
                     stopped = false
                     reset()
                 }else{
-                    reset(positionY - size.toDouble())
+                    reset(positionY =  -size.toDouble())
                 }
             }else{
                 positionY = params.parentHeight + size.toDouble()

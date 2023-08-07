@@ -81,6 +81,10 @@ internal open class Bouncer(givenPosition: PointF, givenColor: Int, val bouncing
         bouncerRadius = bouncerRadius + 3
     }
 
+    fun larger(){
+        bouncerRadius += 150
+    }
+
     fun setRadius(newRadius: Float) {
         if (newRadius > 3) {
             bouncerRadius = newRadius
@@ -213,12 +217,7 @@ internal class ExplodingBouncer(givenPosition: PointF, givenColor: Int, givenBou
 
     fun explodeBall(){
         ballState = BALL_EXPLODING
-        enlarge()
-        enlarge()
-    }
-
-    fun bigger(){
-        enlarge()
+        larger()
     }
 
     fun isExploded() : Boolean{
