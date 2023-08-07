@@ -10,20 +10,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.apprajapati.myanimations.databinding.FragmentObjectAnimatorBinding
+import com.apprajapati.myanimations.ui.BaseFragment
 
-class ObjectAnimatorFragment : Fragment() {
+class ObjectAnimatorFragment :
+    BaseFragment<FragmentObjectAnimatorBinding>(FragmentObjectAnimatorBinding::inflate) {
 
-    private var _binding: FragmentObjectAnimatorBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentObjectAnimatorBinding.inflate(inflater, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
 
         //animateButton()
 
@@ -101,10 +100,5 @@ class ObjectAnimatorFragment : Fragment() {
             mScaleX.start()
             mScaleY.start()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -11,18 +11,15 @@ import android.view.animation.AnimationUtils
 import android.view.animation.RotateAnimation
 import android.view.animation.TranslateAnimation
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.apprajapati.myanimations.adapters.MyItemAdapter
 import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentAndroidAnimationsBinding
+import com.apprajapati.myanimations.ui.BaseFragment
 
-class AndroidAnimations : Fragment() {
-
-    private var _binding: FragmentAndroidAnimationsBinding? = null
-
-    private val binding get() = _binding!!
+class AndroidAnimations :
+    BaseFragment<FragmentAndroidAnimationsBinding>(FragmentAndroidAnimationsBinding::inflate) {
 
     private val mAdapter = MyItemAdapter()
 
@@ -31,7 +28,7 @@ class AndroidAnimations : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAndroidAnimationsBinding.inflate(inflater, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
 
         //Use below functions to test each function. Every demo uses views and hides views accordingly.
 
@@ -127,11 +124,6 @@ class AndroidAnimations : Fragment() {
         // animationSet.addAnimation(scale)
         animationSet.duration = 3000
         return animationSet
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
 

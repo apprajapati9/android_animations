@@ -1,42 +1,28 @@
 package com.apprajapati.myanimations.ui.fragments
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.content.ClipData
-import android.content.ClipDescription
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Point
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationSet
-import android.view.animation.RotateAnimation
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentRotatingSquareTimeBinding
+import com.apprajapati.myanimations.ui.BaseFragment
 import com.apprajapati.myanimations.util.NetworkResult
 import com.apprajapati.myanimations.util.getTimeOnly
 import com.apprajapati.myanimations.util.getTimeOnlyTimeApi
 import com.apprajapati.myanimations.util.rotateViewUsingObjectAnimator
 import com.apprajapati.myanimations.viewmodels.MainViewModel
-import com.google.android.material.dialog.InsetDialogOnTouchListener
-import java.util.Timer
-import java.util.TimerTask
 
-class RotatingSquareTime : Fragment() {
+class RotatingSquareTime :
+    BaseFragment<FragmentRotatingSquareTimeBinding>(FragmentRotatingSquareTimeBinding::inflate) {
 
-    private var _binding: FragmentRotatingSquareTimeBinding? = null
-
-    private val binding get() = _binding!!
 
     private lateinit var viewModel: MainViewModel
 
@@ -51,9 +37,7 @@ class RotatingSquareTime : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRotatingSquareTimeBinding.inflate(inflater, container, false)
-
-
+        super.onCreateView(inflater, container, savedInstanceState)
         viewModel.time.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -200,12 +184,10 @@ class RotatingSquareTime : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.startFetchingTime()
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.stopTimer()
-        _binding = null
     }
 }

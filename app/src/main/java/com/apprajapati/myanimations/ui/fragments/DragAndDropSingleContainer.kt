@@ -20,27 +20,24 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.RotateAnimation
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.apprajapati.myanimations.databinding.FragmentRotateSquareBinding
+import com.apprajapati.myanimations.ui.BaseFragment
 import kotlin.math.roundToInt
 
 /*
     This class created to study how drag/drop mechanism work. Instead of using two containers, it uses only one container to demonstrate drag and drop in a single container. Usually 2 containers are used.
  */
-class DragAndDropSingleContainer : Fragment() {
+class DragAndDropSingleContainer :
+    BaseFragment<FragmentRotateSquareBinding>(FragmentRotateSquareBinding::inflate) {
 
-    private var _binding: FragmentRotateSquareBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRotateSquareBinding.inflate(inflater, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+
         //rotateSquare()
 
         val animator = rotateSquareUsingObjectAnimator()
@@ -66,7 +63,7 @@ class DragAndDropSingleContainer : Fragment() {
 //                //supports Nougat and beyond
 //                view?.startDragAndDrop(clipData, dragShadowBuilder, view, 0)
 //            }
-             it.visibility = View.INVISIBLE
+            it.visibility = View.INVISIBLE
             true
         }
 
@@ -171,8 +168,8 @@ class DragAndDropSingleContainer : Fragment() {
                 // lineView = lineView(requireContext(), event.x, event.y)
 
                 //These two methods are to test how X,Y coordinates are manipulated in order to position the view to the center.
-               // drawLinesToVisualize(event.x, event.y)
-               // drawLinesToVisualize(draggedView.x, draggedView.y)
+                // drawLinesToVisualize(event.x, event.y)
+                // drawLinesToVisualize(draggedView.x, draggedView.y)
 
                 true
             }
@@ -262,10 +259,5 @@ class DragAndDropSingleContainer : Fragment() {
 
     private fun pxToDp(px: Int): Int {
         return (px / requireContext().resources.displayMetrics.density).roundToInt()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

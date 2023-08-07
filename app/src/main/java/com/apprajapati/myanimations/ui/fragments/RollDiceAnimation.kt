@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentRollDiceBinding
+import com.apprajapati.myanimations.ui.BaseFragment
 import kotlin.concurrent.thread
 import kotlin.random.Random
 
@@ -23,9 +22,7 @@ import kotlin.random.Random
 const val DIE_INDEX_KEY = "die_index"
 const val DIE_VALUE_KEY = "die_value"
 
-class RollDiceAnimation : Fragment() {
-
-    private var _binding: FragmentRollDiceBinding? = null
+class RollDiceAnimation : BaseFragment<FragmentRollDiceBinding>(FragmentRollDiceBinding::inflate) {
 
     private lateinit var imageViews: Array<ImageView>
     private val drawables = arrayOf(
@@ -48,28 +45,16 @@ class RollDiceAnimation : Fragment() {
         }
     }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentRollDiceBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageViews = arrayOf(binding.die1,
-                binding.die2,
-                binding.die3,
-                binding.die4,
-                binding.die5)
+        imageViews = arrayOf(
+            binding.die1,
+            binding.die2,
+            binding.die3,
+            binding.die4,
+            binding.die5
+        )
 
         binding.rollButton.setOnClickListener {
             rollTheDice()
@@ -79,6 +64,7 @@ class RollDiceAnimation : Fragment() {
 
     private fun rollTheDice() {
 
+        //For every die, starting a new thread, 6 total threads
         for (dieIndex in imageViews.indices) {
 
             thread(start = true) {
@@ -99,17 +85,11 @@ class RollDiceAnimation : Fragment() {
 
             }
 
-
         }
 
     }
 
     private fun getDieValue(): Int {
         return Random.nextInt(1, 7) //until isn't inclusive.
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
