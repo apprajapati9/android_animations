@@ -36,3 +36,7 @@ fun rotateViewUsingObjectAnimator(animateView: View): ObjectAnimator {
     //animator.start()
     return animator
 }
+
+fun View.setGone(){
+    this.visibility = View.GONE
+}

@@ -56,6 +56,10 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_MainFragment_to_rotatingSquareTime)
         }
 
+        binding.rotatingBallCustomView.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_bouncingBallViewFragment)
+        }
+
     }
 
 

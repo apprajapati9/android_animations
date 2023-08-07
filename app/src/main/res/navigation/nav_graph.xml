@@ -33,6 +33,10 @@
             android:id="@+id/action_MainFragment_to_rotatingSquareTime"
             app:destination="@id/rotatingSquareTime" />
 
+        <action
+            android:id="@+id/action_MainFragment_to_bouncingBallViewFragment"
+            app:destination="@id/bouncingBallViewFragment" />
+
     </fragment>
 
 
@@ -47,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/SnowFlakeFragment"
-        android:name="com.apprajapati.myanimations.SnowFlakeAnimation"
+        android:name="com.apprajapati.myanimations.ui.fragments.SnowFlakeAnimation"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_snow_flake_animation">
 
@@ -86,6 +90,12 @@
         android:id="@+id/rotatingSquareTime"
         android:name="com.apprajapati.myanimations.ui.fragments.RotatingSquareTime"
         android:label="RotatingSquareTime" />
+
+
+    <fragment
+        android:id="@+id/bouncingBallViewFragment"
+        android:name="com.apprajapati.myanimations.ui.fragments.BouncingBallViewFragment"
+        android:label="BouncingBallViewFragment" />
 
 
 </navigation>

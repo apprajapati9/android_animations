@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Point
 import android.graphics.drawable.Drawable
-import android.health.connect.datatypes.HeightRecord
 import android.os.Bundle
 import android.view.DragEvent
 import android.view.LayoutInflater

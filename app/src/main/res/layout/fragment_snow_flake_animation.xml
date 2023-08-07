@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SnowFlakeAnimation">
+        tools:context=".ui.fragments.SnowFlakeAnimation">
 
         <com.apprajapati.snowfall.SnowFlakeView
             android:layout_width="match_parent"
