@@ -1,5 +1,6 @@
 package com.apprajapati.myanimations.ui.fragments
 
+import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.apprajapati.myanimations.adapters.MyItemAdapter
 import com.apprajapati.myanimations.R
 import com.apprajapati.myanimations.databinding.FragmentAndroidAnimationsBinding
 import com.apprajapati.myanimations.ui.BaseFragment
+import com.apprajapati.myanimations.ui.fragments.donut_customview.DonutDrawable
 
 class AndroidAnimations :
     BaseFragment<FragmentAndroidAnimationsBinding>(FragmentAndroidAnimationsBinding::inflate) {
@@ -41,6 +43,26 @@ class AndroidAnimations :
 
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.solarSystem.startThread()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.solarSystem.stopThread()
+    }
+
+    //test custom drawable view DonutDrawable in this method
+    fun donutDrawableShow(){
+        val donut = DonutDrawable(30).apply {
+            icingColor = Color.RED
+        }
+
+        //donut.icingColor = Color.RED
+        binding.imageView.setImageDrawable(donut)
     }
 
     private fun animateRecyclerViewItems() {

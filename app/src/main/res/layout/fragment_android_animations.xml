@@ -12,18 +12,18 @@
         android:layout_height="match_parent">
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="Hello World"
-            android:gravity="center"
             android:id="@+id/hello_button"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:textColor="@color/white"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:text="Hello World"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/solarSystem" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -44,6 +44,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.apprajapati.myanimations.ui.fragments.customview.TheSolarSystemView
+            android:id="@+id/solarSystem"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

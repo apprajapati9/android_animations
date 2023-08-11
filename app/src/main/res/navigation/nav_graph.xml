@@ -94,7 +94,7 @@
 
     <fragment
         android:id="@+id/bouncingBallViewFragment"
-        android:name="com.apprajapati.myanimations.ui.fragments.BouncingBallViewFragment"
+        android:name="com.apprajapati.myanimations.ui.fragments.MovingBallCustomView.BouncingBallViewFragment"
         android:label="BouncingBallViewFragment" />
 
 

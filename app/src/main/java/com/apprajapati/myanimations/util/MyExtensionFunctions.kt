@@ -1,6 +1,7 @@
 package com.apprajapati.myanimations.util
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.view.View
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -39,4 +40,8 @@ fun rotateViewUsingObjectAnimator(animateView: View): ObjectAnimator {
 
 fun View.setGone(){
     this.visibility = View.GONE
+}
+
+fun pxToDp(context: Context, px: Float) : Int{
+    return Math.round(px/context.resources.displayMetrics.density)
 }
