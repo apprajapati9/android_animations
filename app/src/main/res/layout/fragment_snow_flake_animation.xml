@@ -26,6 +26,7 @@
             app:snowflakeSizeMax="50"
             app:snowflakeSizeMin="24"
             app:snowflakeSpeedMax="12"
+            android:background="@color/black"
             app:snowflakeSpeedMin="4"
             app:snowflakesAlreadyFalling="false"
             app:snowflakesFadingEnabled="true"

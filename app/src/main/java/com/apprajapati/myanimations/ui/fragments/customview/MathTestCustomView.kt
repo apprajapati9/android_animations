@@ -191,12 +191,22 @@ class TheSolarSystemView (context: Context, attributeSet: AttributeSet ?= null) 
         canvas.drawRect(rectF, paint)
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        startThread()
+    }
+
     fun startThread() {
         if (!startThread) {
             startThread = true
             callerThread = Thread(this)
             callerThread!!.start()
         }
+    }
+
+    override fun onDetachedFromWindow() {
+        stopThread()
+        super.onDetachedFromWindow()
     }
 
     fun stopThread() {

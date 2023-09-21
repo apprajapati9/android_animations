@@ -26,9 +26,10 @@ class ObjectAnimatorFragment :
 
         //animateButton()
 
-        animateMultipleAnimators()    //to animate several animators at the same time.
+        //animateMultipleAnimators()    //to animate several animators at the same time.
 
-        chainedAnimators()
+        //chainedAnimators()
+
 
 
 

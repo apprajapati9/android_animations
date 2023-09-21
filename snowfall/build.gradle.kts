@@ -16,7 +16,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     namespace = "com.apprajapati.snowfall"
 }
@@ -24,6 +24,5 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.10.1")
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlinVersion")
 
 }

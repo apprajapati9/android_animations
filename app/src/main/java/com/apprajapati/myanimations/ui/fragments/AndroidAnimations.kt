@@ -47,12 +47,12 @@ class AndroidAnimations :
 
     override fun onResume() {
         super.onResume()
-        binding.solarSystem.startThread()
+        // binding.solarSystem.startThread() // Can manually start the thread like this, but can also override onAttachedWindow in customview to start a thread, much better solution than this.
     }
 
     override fun onStop() {
         super.onStop()
-        binding.solarSystem.stopThread()
+        //binding.solarSystem.stopThread()
     }
 
     //test custom drawable view DonutDrawable in this method
