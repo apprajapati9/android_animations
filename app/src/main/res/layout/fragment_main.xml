@@ -130,5 +130,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rotateSquareTime" />
 
+        <Button
+            android:id="@+id/button_progressView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Progress CustomView"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="@color/cardview_dark_background"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/rotating_ball_customView"
+            app:layout_constraintStart_toStartOf="@+id/rotating_ball_customView"
+            app:layout_constraintTop_toBottomOf="@+id/rotating_ball_customView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

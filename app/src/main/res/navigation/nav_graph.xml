@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_MainFragment_to_bouncingBallViewFragment"
             app:destination="@id/bouncingBallViewFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_progressViewFragment"
+            app:destination="@id/progressViewFragment" />
 
     </fragment>
 
@@ -96,6 +99,10 @@
         android:id="@+id/bouncingBallViewFragment"
         android:name="com.apprajapati.myanimations.ui.fragments.MovingBallCustomView.BouncingBallViewFragment"
         android:label="BouncingBallViewFragment" />
+    <fragment
+        android:id="@+id/progressViewFragment"
+        android:name="com.apprajapati.myanimations.ui.fragments.progressview.ProgressViewFragment"
+        android:label="ProgressViewFragment" />
 
 
 </navigation>

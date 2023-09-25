@@ -43,6 +43,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         binding.rotatingBallCustomView.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_bouncingBallViewFragment)
         }
+
+        binding.buttonProgressView.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_progressViewFragment)
+        }
     }
 
 
