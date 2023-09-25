@@ -23,7 +23,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.apprajapati.myanimations.ui.fragments.circledragview.CirclePointsView
+
+        <com.apprajapati.circlepoints.CirclePointsView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"

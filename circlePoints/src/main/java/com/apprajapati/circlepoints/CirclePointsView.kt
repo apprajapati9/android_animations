@@ -1,4 +1,4 @@
-package com.apprajapati.myanimations.ui.fragments.circledragview
+package com.apprajapati.circlepoints
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,13 +7,10 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
-import android.text.Editable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.apprajapati.myanimations.R
-
 
 
 class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context, attrsSet) {
@@ -23,16 +20,16 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         const val MAX = 100
         const val MIN = 0
 
-        const val ANGLE_OFFSET= -90f
+        const val ANGLE_OFFSET = -90f
     }
 
     var mPoints = MIN
     var mMin = MIN
     var mMax = MAX
 
-    var mStep= 10
+    var mStep = 10
 
-    var mIndicatorIcon: Drawable ?= null
+    var mIndicatorIcon: Drawable? = null
 
     var mProgressWidth = 12f
         get() = field
@@ -42,7 +39,7 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         }
     var mArcWidth = 12f
         get() = field
-        set(width){
+        set(width) {
             field = width
             mArcPaint.strokeWidth = field
         }
@@ -62,7 +59,7 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
     var isMin = false
 
     var mArcRadius = 0f
-    val mArcRect : RectF = RectF()
+    val mArcRect: RectF = RectF()
     var mArcPaint: Paint = Paint()
 
     var mProgressSweep = 0f
@@ -78,16 +75,17 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
     val mIndicatorPoints: PointF = PointF(0f, 0f)
 
     var mTouchAngle = 0
-    var mPointsChangeListener : OnCirclePointsChangeListener ?= null
+    var mPointsChangeListener: OnCirclePointsChangeListener? = null
 
     //internal vars
-    private var mUpdateTimes=0
+    private var mUpdateTimes = 0
     private var mPreviousProgress = -1
     private var mCurrentProgress = 0
+
     init {
         val density = resources.displayMetrics.density
 
-        var arcColor= ContextCompat.getColor(context, R.color.colorAccent)
+        var arcColor = ContextCompat.getColor(context, R.color.colorAccent)
         var progressColor = ContextCompat.getColor(context, R.color.colorPrimary)
         var textColor = ContextCompat.getColor(context, R.color.white)
 
@@ -101,26 +99,34 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         val setValues = context.obtainStyledAttributes(attrsSet, R.styleable.CirclePointsView, 0, 0)
 
         val indicatorIcon = setValues.getDrawable(R.styleable.CirclePointsView_indicatorIcon)
-        if(indicatorIcon != null){
+        if (indicatorIcon != null) {
             mIndicatorIcon = indicatorIcon
         }
 
         val indicatorIconHalfWidth = mIndicatorIcon!!.intrinsicWidth / 2
         val indicatorIconHalfHeight = mIndicatorIcon!!.intrinsicHeight / 2
-        mIndicatorIcon!!.setBounds(-indicatorIconHalfWidth, -indicatorIconHalfHeight, indicatorIconHalfWidth, indicatorIconHalfHeight)
+        mIndicatorIcon!!.setBounds(
+            -indicatorIconHalfWidth,
+            -indicatorIconHalfHeight,
+            indicatorIconHalfWidth,
+            indicatorIconHalfHeight
+        )
 
         mPoints = setValues.getInteger(R.styleable.CirclePointsView_points, mPoints)
         mMin = setValues.getInteger(R.styleable.CirclePointsView_min, mMin)
         mMax = setValues.getInteger(R.styleable.CirclePointsView_max, mMax)
         mStep = setValues.getInteger(R.styleable.CirclePointsView_step, mStep)
 
-        mProgressWidth = setValues.getDimension(R.styleable.CirclePointsView_progressWidth, mProgressWidth)
-        progressColor = setValues.getColor(R.styleable.CirclePointsView_progressColor, progressColor)
+        mProgressWidth =
+            setValues.getDimension(R.styleable.CirclePointsView_progressWidth, mProgressWidth)
+        progressColor =
+            setValues.getColor(R.styleable.CirclePointsView_progressColor, progressColor)
 
         mArcWidth = setValues.getDimension(R.styleable.CirclePointsView_arcWidth, mArcWidth)
         arcColor = setValues.getColor(R.styleable.CirclePointsView_arcColor, arcColor)
 
-        mTextSize = setValues.getDimension(R.styleable.CirclePointsView_textSize, mTextSize).toInt().toFloat()
+        mTextSize = setValues.getDimension(R.styleable.CirclePointsView_textSize, mTextSize).toInt()
+            .toFloat()
         textColor = setValues.getColor(R.styleable.CirclePointsView_textColor, textColor)
 
 
@@ -163,15 +169,20 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         val height = getDefaultSize(suggestedMinimumHeight, heightMeasureSpec)
         val min = Math.min(width, height)
 
-        translateX = (width*0.5f).toInt()
-        translateY = (height*0.5f).toInt()
+        translateX = (width * 0.5f).toInt()
+        translateY = (height * 0.5f).toInt()
 
-        var arcDiameter= min - paddingLeft
-        mArcRadius = (arcDiameter/2).toFloat()
+        var arcDiameter = min - paddingLeft
+        mArcRadius = (arcDiameter / 2).toFloat()
 
-        val top = height /2 - (arcDiameter /2)
+        val top = height / 2 - (arcDiameter / 2)
         val left = width / 2 - (arcDiameter / 2)
-        mArcRect!!.set(left.toFloat(), top.toFloat(), left+arcDiameter.toFloat(), top+arcDiameter.toFloat())
+        mArcRect!!.set(
+            left.toFloat(),
+            top.toFloat(),
+            left + arcDiameter.toFloat(),
+            top + arcDiameter.toFloat()
+        )
         updateIndicatorIconPosition()
 
 
@@ -179,7 +190,7 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
     }
 
     override fun onDraw(canvas: Canvas) {
-        if(!mClockwise){
+        if (!mClockwise) {
             canvas.scale(-1f, 1f, mArcRect.centerX(), mArcRect.centerY())
         }
 
@@ -188,8 +199,8 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         mTextPaint.getTextBounds(textPoint, 0, textPoint.length, mTextRect)
 
         //center the text
-        val xPosition = width/2 - mTextRect.width()/2
-        val yPosition = ((mArcRect.centerY()) - ((mTextPaint.descent() + mTextPaint.ascent())/2))
+        val xPosition = width / 2 - mTextRect.width() / 2
+        val yPosition = ((mArcRect.centerY()) - ((mTextPaint.descent() + mTextPaint.ascent()) / 2))
 
         canvas.drawText(textPoint, xPosition.toFloat(), yPosition, mTextPaint)
 
@@ -197,39 +208,41 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         canvas.drawArc(mArcRect, ANGLE_OFFSET, 360f, false, mArcPaint)
         canvas.drawArc(mArcRect, ANGLE_OFFSET, mProgressSweep, false, mProgressPaint)
 
-        if(mEnabled){
+        if (mEnabled) {
             //draw indicator
-            canvas.translate(translateX- mIndicatorPoints.x, translateY
-            - mIndicatorPoints.y)
+            canvas.translate(
+                translateX - mIndicatorPoints.x, translateY
+                        - mIndicatorPoints.y
+            )
             mIndicatorIcon!!.draw(canvas)
         }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        if(isEnabled){
+        if (isEnabled) {
             this.parent.requestDisallowInterceptTouchEvent(true)
 
-            when(event.action){
+            when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    if(mPointsChangeListener != null){
+                    if (mPointsChangeListener != null) {
                         mPointsChangeListener!!.onStartTrackingTouch(this)
                     }
                 }
 
-                MotionEvent.ACTION_MOVE ->{
+                MotionEvent.ACTION_MOVE -> {
                     updateOnTouch(event)
                 }
 
-                MotionEvent.ACTION_UP ->{
-                    if(mPointsChangeListener != null){
+                MotionEvent.ACTION_UP -> {
+                    if (mPointsChangeListener != null) {
                         mPointsChangeListener!!.onStopTrackingTouch(this)
                     }
                     isPressed = false
                     this.parent.requestDisallowInterceptTouchEvent(false)
                 }
 
-                MotionEvent.ACTION_CANCEL ->{
-                    if(mPointsChangeListener != null){
+                MotionEvent.ACTION_CANCEL -> {
+                    if (mPointsChangeListener != null) {
                         mPointsChangeListener!!.onStopTrackingTouch(this)
                     }
                     isPressed = false
@@ -243,70 +256,72 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
 
     override fun drawableStateChanged() {
         super.drawableStateChanged()
-        if(mIndicatorIcon != null && mIndicatorIcon!!.isStateful){
+        if (mIndicatorIcon != null && mIndicatorIcon!!.isStateful) {
             val state = drawableState
             mIndicatorIcon!!.setState(state)
         }
         invalidate()
     }
 
-    private fun updateOnTouch(event: MotionEvent){
+    private fun updateOnTouch(event: MotionEvent) {
         isPressed = true
         mTouchAngle = convertTouchEventPointToAngle(event.x, event.y).toInt()
         val progress = convertAngleToProgress(mTouchAngle)
         updateProgress(progress, true)
     }
 
-    fun convertTouchEventPointToAngle(positionX : Float, positionY: Float): Float{
+    fun convertTouchEventPointToAngle(positionX: Float, positionY: Float): Float {
         var x = positionX - translateX
         val y = positionY - translateY
 
-        x = if(mClockwise) x else -x
-        var angle = Math.toDegrees(Math.atan2(y.toDouble(), x.toDouble()) + (Math.PI /2))
-        angle = if(angle < 0) angle+360 else angle
+        x = if (mClockwise) x else -x
+        var angle = Math.toDegrees(Math.atan2(y.toDouble(), x.toDouble()) + (Math.PI / 2))
+        angle = if (angle < 0) angle + 360 else angle
         return angle.toFloat()
     }
 
-    fun convertAngleToProgress(touchAngle : Int): Int {
-        return Math.round(valuePerDegree()*touchAngle)
+    fun convertAngleToProgress(touchAngle: Int): Int {
+        return Math.round(valuePerDegree() * touchAngle)
     }
 
-    private fun updateIndicatorIconPosition(){
-        val thumbAngle = (mProgressSweep+90)
-        mIndicatorPoints.x = (mArcRadius*Math.cos(Math.toRadians(thumbAngle.toDouble()))).toFloat()
-        mIndicatorPoints.y = (mArcRadius* Math.sin(Math.toRadians(thumbAngle.toDouble()))).toFloat()
+    private fun updateIndicatorIconPosition() {
+        val thumbAngle = (mProgressSweep + 90)
+        mIndicatorPoints.x =
+            (mArcRadius * Math.cos(Math.toRadians(thumbAngle.toDouble()))).toFloat()
+        mIndicatorPoints.y =
+            (mArcRadius * Math.sin(Math.toRadians(thumbAngle.toDouble()))).toFloat()
     }
 
     private fun valuePerDegree(): Float {
-        return mMax/360f
+        return mMax / 360f
     }
 
-    public interface OnCirclePointsChangeListener{
-        fun onPointsChanged(pointsView : CirclePointsView, points: Int, fromUser: Boolean)
+    public interface OnCirclePointsChangeListener {
+        fun onPointsChanged(pointsView: CirclePointsView, points: Int, fromUser: Boolean)
         fun onStartTrackingTouch(pointsView: CirclePointsView)
         fun onStopTrackingTouch(pointsView: CirclePointsView)
     }
 
-    private fun updateProgress(progress: Int, fromUser: Boolean){
+    private fun updateProgress(progress: Int, fromUser: Boolean) {
 
-        var mValueProgress= progress
-        val maxDetectValue = mMax*0.95
-        val minDetectValue = mMin*0.0f + mMin
+        var mValueProgress = progress
+        val maxDetectValue = mMax * 0.95
+        val minDetectValue = mMin * 0.0f + mMin
 
         mUpdateTimes++
-        if(mValueProgress==INVALID_VALUE){
+        if (mValueProgress == INVALID_VALUE) {
             return
         }
 
         //avoid accidentally touch to become max from the orig point
-        if(mValueProgress > maxDetectValue && mPreviousProgress == INVALID_VALUE){
+        if (mValueProgress > maxDetectValue && mPreviousProgress == INVALID_VALUE) {
             return
         }
 
         //record prev and curr progress change
-        if(mUpdateTimes == 1){
+        if (mUpdateTimes == 1) {
             mCurrentProgress = mValueProgress
-        }else{
+        } else {
             mPreviousProgress = mCurrentProgress
             mCurrentProgress = mValueProgress
         }
@@ -317,7 +332,7 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         //when reaching max, the progress will drop from max  and vice versa
 
         //if reached max or min, stop increasing/decreasing to avoid exceeding the min/max
-        if(mUpdateTimes > 1 && !isMin && !isMax) {
+        if (mUpdateTimes > 1 && !isMin && !isMax) {
             if (mPreviousProgress >= maxDetectValue && mCurrentProgress <= minDetectValue && mPreviousProgress > mCurrentProgress) {
                 isMax = true
                 mValueProgress = mMax
@@ -338,22 +353,23 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
                 }
             }
             invalidate()
-        }else{
+        } else {
 
-            if(isMax and (mCurrentProgress < mPreviousProgress) && mCurrentProgress >= maxDetectValue){
+            if (isMax and (mCurrentProgress < mPreviousProgress) && mCurrentProgress >= maxDetectValue) {
                 isMax = false
             }
-            if(isMin && (mPreviousProgress < mCurrentProgress) &&
-                mPreviousProgress <= minDetectValue && mCurrentProgress <= minDetectValue && mPoints >= mMin){
+            if (isMin && (mPreviousProgress < mCurrentProgress) &&
+                mPreviousProgress <= minDetectValue && mCurrentProgress <= minDetectValue && mPoints >= mMin
+            ) {
                 isMin = false
             }
         }
 
-        if(!isMin && !isMax){
+        if (!isMin && !isMax) {
             mValueProgress = if (mValueProgress > mMax) mMax else mValueProgress
             mValueProgress = if (mValueProgress < mMin) mMin else mValueProgress
 
-            if(mPointsChangeListener != null){
+            if (mPointsChangeListener != null) {
                 mValueProgress -= (mValueProgress % mStep)
                 mPointsChangeListener!!.onPointsChanged(this, mValueProgress, fromUser)
             }
@@ -363,18 +379,18 @@ class CirclePointsView(context: Context, attrsSet: AttributeSet) : View(context,
         }
     }
 
-    fun setPoints(points: Int){
+    fun setPoints(points: Int) {
         var points = points
         points = if (points > mMax) mMax else points
         points = if (points < mMin) mMin else points
         updateProgress(points, false)
     }
 
-    fun setOnPointsChangeListener(listener: OnCirclePointsChangeListener){
+    fun setOnPointsChangeListener(listener: OnCirclePointsChangeListener) {
         mPointsChangeListener = listener
     }
 
-    fun setStep(step: Int){
+    fun setStep(step: Int) {
         mStep = step
     }
 }
