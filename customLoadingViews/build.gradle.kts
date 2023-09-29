@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library") //This is the most important difference between a library module and application main module.
     id("kotlin-android")
+    id("maven-publish")
 }
 
 
@@ -32,4 +33,17 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
+}
+
+afterEvaluate{
+    publishing {
+        publications {
+            create<MavenPublication>("release"){
+                from(components["release"])
+                groupId = "com.apprajapati"
+                artifactId = "loading-view"
+                version = "1.0"
+            }
+        }
+    }
 }
