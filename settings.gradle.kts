@@ -9,4 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "MyAnimations"
 include(":app")
 include(":snowfall")
-include(":circlePoints")
+include(":customLoadingViews")

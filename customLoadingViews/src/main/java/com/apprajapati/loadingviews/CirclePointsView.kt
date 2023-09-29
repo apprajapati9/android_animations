@@ -1,4 +1,4 @@
-package com.apprajapati.circlepoints
+package com.apprajapati.loadingviews
 
 import android.content.Context
 import android.graphics.Canvas

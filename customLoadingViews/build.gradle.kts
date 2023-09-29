@@ -5,11 +5,11 @@ plugins {
 
 
 android {
-    namespace = "com.apprajapati.circlepoints"
+    namespace = "com.apprajapati.loadingviews"
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 21
     }
 
     buildTypes {
