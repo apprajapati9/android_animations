@@ -22,4 +22,10 @@
 
     </declare-styleable>
 
+    <declare-styleable name="CircularLoadingView">
+        <attr name="duration" format="integer" />
+<!--        <attr name="circleColor" format="color" />-->
+        <attr name="circleWidth" format="float" />
+    </declare-styleable>
+
 </resources>

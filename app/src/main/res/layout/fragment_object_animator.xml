@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.apprajapati.circlepoints.CirclePointsView
+        <com.apprajapati.loadingviews.CirclePointsView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
