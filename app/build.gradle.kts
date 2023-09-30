@@ -53,4 +53,5 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     //Gson - converterfactor
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.12")
 }

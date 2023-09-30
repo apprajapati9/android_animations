@@ -13,14 +13,19 @@ import android.os.Looper
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AlphaAnimation
+import android.view.animation.AnticipateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.blue
+import androidx.core.graphics.green
+import androidx.core.graphics.red
 import androidx.core.view.updateLayoutParams
 
 class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
-    View(context, attributeSet), Runnable {
+    View(context, attributeSet) {
 
     private val centerXY = PointF(0f, 0f)
 
@@ -29,13 +34,9 @@ class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
         set(value) {
             field = value  //value can only be changed when that's above 100.
         }
-
-    val viewRect: RectF = RectF()
     var radius = 0f
     var outerCircleRadius = 0f
 
-    var valueAnimator = ValueAnimator()
-    var fadeAnimator = ValueAnimator()
     var circleColor = Color.WHITE
     var animationDuration = 1000
     var circleWidth = 15f
@@ -103,8 +104,8 @@ class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
     }
 
     fun PointF.getCenterXY() {
-        x = width.toFloat().div(2) //width/2).toFloat()
-        y = height.toFloat().div(2) //height/2).toFloat()
+        x = width.toFloat().div(2)
+        y = height.toFloat().div(2)
     }
 
     private fun getColorRange(): PropertyValuesHolder {
@@ -122,15 +123,14 @@ class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
 
         handler.postDelayed({
             shownOuter = true
-        }, 500)
+        }, 300)
 
-        valueAnimator = ValueAnimator().apply {
+        val valueAnimator = ValueAnimator().apply {
             setValues(valuesHolder, colorValues)
             duration = animationDuration.toLong()
             repeatCount = ValueAnimator.INFINITE
 
             interpolator = DecelerateInterpolator(2f) //10f does give some interesting effects
-
             addUpdateListener {
                 val colors = it.getAnimatedValue("colorValues") as Int
                 mCirclePaint.color = Color.rgb(colors, colors, colors)
@@ -145,13 +145,4 @@ class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
         valueAnimator.start()
     }
 
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        valueAnimator.end()
-    }
-
-    override fun run() {
-        TODO("Not yet implemented")
-    }
 }
