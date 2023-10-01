@@ -20,12 +20,20 @@
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hideShowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="showHide button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.apprajapati.loadingviews.CircularLoadingView
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:duration="1000"
-            app:circleWidth="20"
+            android:id="@+id/loading_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
