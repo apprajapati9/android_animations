@@ -7,24 +7,14 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PointF
-import android.graphics.RectF
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.AlphaAnimation
-import android.view.animation.AnticipateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
-import androidx.core.view.updateLayoutParams
 
-class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
+class CircularLoadingView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int = 0) :
     View(context, attributeSet) {
 
     private val centerXY = PointF(0f, 0f)
@@ -142,6 +132,9 @@ class CircularLoadingView(context: Context, attributeSet: AttributeSet) :
 
     fun animateProgress() {
        // stopAnimation()
+        if (visibility != VISIBLE || windowVisibility != VISIBLE) {
+            return
+        }
         val valuesHolder = PropertyValuesHolder.ofFloat("progressValue", 0f, minHeight)
 
         val colorValues = getColorRange() //0 being black and 255 being white.
