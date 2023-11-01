@@ -37,8 +37,6 @@ class CircularLoadingView @JvmOverloads constructor(context: Context, attributeS
 
     private val handler = Handler(Looper.getMainLooper())
 
-    private var valueAnimator = ValueAnimator()
-
     init {
         val setValues =
             context.obtainStyledAttributes(attributeSet, R.styleable.CircularLoadingView, 0, 0)
@@ -108,59 +106,46 @@ class CircularLoadingView @JvmOverloads constructor(context: Context, attributeS
         }
     }
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        stopAnimation()
-    }
-
     override fun setVisibility(visibility: Int) {
         if(visibility == GONE || visibility == INVISIBLE){
-            stopAnimation()
+
         }else{
             animateProgress()
         }
         super.setVisibility(visibility)
     }
 
-    fun stopAnimation(){
-        if(valueAnimator != null){
-            valueAnimator.cancel()
-            valueAnimator.end()
-        }
-    }
-
 
     fun animateProgress() {
-       // stopAnimation()
+
         if (visibility != VISIBLE || windowVisibility != VISIBLE) {
             return
+        }else{
+            val valuesHolder = PropertyValuesHolder.ofFloat("progressValue", 0f, minHeight)
+
+            val colorValues = getColorRange() //0 being black and 255 being white.
+
+            handler.postDelayed({
+                shownOuter = true
+            }, 300)
+
+            ValueAnimator().apply {
+                setValues(valuesHolder, colorValues)
+                duration = animationDuration.toLong()
+                repeatCount = ValueAnimator.INFINITE
+
+                interpolator = DecelerateInterpolator(2f) //10f does give some interesting effects
+                addUpdateListener {
+                    val colors = it.getAnimatedValue("colorValues") as Int
+                    mCirclePaint.color = Color.rgb(colors, colors, colors)
+
+                    val percentage = it.getAnimatedValue("progressValue") as Float
+                    radius = percentage
+
+                    invalidate()
+                }
+            }.start()
         }
-        val valuesHolder = PropertyValuesHolder.ofFloat("progressValue", 0f, minHeight)
-
-        val colorValues = getColorRange() //0 being black and 255 being white.
-
-        handler.postDelayed({
-            shownOuter = true
-        }, 300)
-
-        valueAnimator = ValueAnimator().apply {
-            setValues(valuesHolder, colorValues)
-            duration = animationDuration.toLong()
-            repeatCount = ValueAnimator.INFINITE
-
-            interpolator = DecelerateInterpolator(2f) //10f does give some interesting effects
-            addUpdateListener {
-                val colors = it.getAnimatedValue("colorValues") as Int
-                mCirclePaint.color = Color.rgb(colors, colors, colors)
-
-                val percentage = it.getAnimatedValue("progressValue") as Float
-                radius = percentage
-
-                invalidate()
-            }
-        }
-
-        valueAnimator.start()
     }
 
 }
