@@ -35,6 +35,8 @@ class CircularLoadingView @JvmOverloads constructor(context: Context, attributeS
     private var outerCirclePaint = Paint()
     private var shownOuter = false
 
+    private val mAnimator = ValueAnimator()
+    private var animStatus = true
     init {
         val setValues =
             context.obtainStyledAttributes(attributeSet, R.styleable.CircularLoadingView, 0, 0)
@@ -106,11 +108,21 @@ class CircularLoadingView @JvmOverloads constructor(context: Context, attributeS
 
     override fun setVisibility(visibility: Int) {
         if(visibility == GONE || visibility == INVISIBLE){
-
+            animStatus = false
+           // mAnimator.cancel()
         }else{
-            animateProgress()
+            animStatus = true
         }
+
+        animateProgress()
+
         super.setVisibility(visibility)
+    }
+
+    override fun onDetachedFromWindow() {
+        mAnimator.removeAllUpdateListeners()
+        mAnimator.cancel()
+        super.onDetachedFromWindow()
     }
 
 
@@ -118,14 +130,14 @@ class CircularLoadingView @JvmOverloads constructor(context: Context, attributeS
 
         if (visibility != VISIBLE || windowVisibility != VISIBLE) {
             return
-        }else{
+        }else if(animStatus){
             val colorValues = getColorRange() //0 being black and 255 being white.
 
             Handler(Looper.getMainLooper()).postDelayed({
                 shownOuter = true
             }, 300)
 
-            ValueAnimator().apply {
+            mAnimator.apply {
                 setValues(PropertyValuesHolder.ofFloat("progressValue", 0f, minHeight), colorValues)
                 duration = animationDuration.toLong()
                 repeatCount = ValueAnimator.INFINITE
