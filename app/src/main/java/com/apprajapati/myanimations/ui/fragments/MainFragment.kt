@@ -47,6 +47,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         binding.buttonProgressView.setOnClickListener {
             findNavController().navigate(R.id.action_MainFragment_to_progressViewFragment)
         }
+
+        binding.buttonDraw.setOnClickListener {
+            findNavController().navigate(R.id.action_MainFragment_to_drawShowcase)
+        }
     }
 
 

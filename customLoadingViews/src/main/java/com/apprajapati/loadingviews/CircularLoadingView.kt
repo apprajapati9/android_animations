@@ -14,6 +14,9 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.core.content.ContextCompat
 
+/*
+In depth documentation of custom views : https://developer.android.com/develop/ui/views/layout/custom-views/custom-components
+ */
 class CircularLoadingView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int = 0) :
     View(context, attributeSet) {
 

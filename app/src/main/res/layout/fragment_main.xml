@@ -8,8 +8,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:id="@+id/fragment_main_view"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
@@ -82,9 +82,9 @@
             app:layout_constraintTop_toBottomOf="@+id/rotate_square_animation" />
 
         <Button
+            android:id="@+id/objectAnimatorButton"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
-            android:id="@+id/objectAnimatorButton"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -100,14 +100,14 @@
 
         <Button
             android:id="@+id/rotateSquareTime"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
-            android:padding="10dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:background="@color/cardview_dark_background"
             android:layout_marginEnd="8dp"
+            android:background="@color/cardview_dark_background"
+            android:padding="10dp"
             android:text="RotateSquareTime"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -132,16 +132,29 @@
 
         <Button
             android:id="@+id/button_progressView"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Progress CustomView"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:background="@color/cardview_dark_background"
             android:padding="10dp"
+            android:text="Progress CustomView"
             app:layout_constraintEnd_toEndOf="@+id/rotating_ball_customView"
             app:layout_constraintStart_toStartOf="@+id/rotating_ball_customView"
             app:layout_constraintTop_toBottomOf="@+id/rotating_ball_customView" />
+
+        <Button
+            android:id="@+id/button_draw"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/cardview_dark_background"
+            android:padding="10dp"
+            android:text="Draw showcase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_progressView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

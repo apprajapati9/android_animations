@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_MainFragment_to_progressViewFragment"
             app:destination="@id/progressViewFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_drawShowcase"
+            app:destination="@id/drawShowcase" />
 
     </fragment>
 
@@ -103,6 +106,11 @@
         android:id="@+id/progressViewFragment"
         android:name="com.apprajapati.myanimations.ui.fragments.progressview.ProgressViewFragment"
         android:label="ProgressViewFragment" />
+    <fragment
+        android:id="@+id/drawShowcase"
+        android:name="com.apprajapati.myanimations.ui.fragments.drawShowcase.DrawShowcase"
+        android:label="fragment_draw_showcase"
+        tools:layout="@layout/fragment_draw_showcase" />
 
 
 </navigation>
